@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Weather</string>
+    <string name="title_activity_maps">@string/app_name</string>
+    <string name="dropped_pin">Dropped pin</string>
+    <string name="please_check_your_internet_connection">Please check your internet connection</string>
+    <string name="create_bookmark">Create bookmark?</string>
+    <string name="ok">ok</string>
+    <string name="title_home">Home</string>
+    <string name="title_more">More</string>
+    <string name="unable_to_fetch_address">Unable to fetch address</string>
+    <string name="home_screen">Home Screen</string>
+    <string name="add_city">Add city</string>
+    <string name="wind">"Wind: %s m/s"</string>
+    <string name="humidity">Humidity: %d %%</string>
+    <string name="uv_index">UV Index:</string>
+    <string name="pressure">Pressure: %dhPa</string>
+    <string name="visibility">Visibility :%s km</string>
+    <string name="centigrade">%d \u2103</string>
+    <string name="forecast">Forecast</string>
+    <string name="two_centigrade">%d / %d \u2103</string>
+</resources>

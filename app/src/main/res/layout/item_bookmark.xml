@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="iBookmarksClickListener"
+            type="com.kashyap.weather.ui.home.IBookmarksClickListener" />
+
+        <variable
+            name="bookMarkModel"
+            type="com.kashyap.weather.domain.models.BookMarkModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:onClick="@{() -> iBookmarksClickListener.onItemSelected(bookMarkModel)}"
+        android:padding="@dimen/_5sdp">
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/bookmark_icon"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            app:srcCompat="@drawable/ic_baseline_bookmark_24" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/location_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical|start"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginRight="@dimen/_5sdp"
+            android:layout_toStartOf="@+id/delete_icon"
+            android:layout_toEndOf="@+id/bookmark_icon"
+            android:maxLines="1"
+            android:text="@{bookMarkModel.name}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/bookmark_icon"
+            app:layout_constraintRight_toLeftOf="@+id/delete_icon"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/delete_icon"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
+            android:onClick="@{() -> iBookmarksClickListener.onDeleteClick(bookMarkModel)}"
+            app:layout_constraintLeft_toRightOf="@+id/location_name"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_delete_24" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
