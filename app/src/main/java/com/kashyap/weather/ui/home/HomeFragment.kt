@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,6 +21,7 @@ import com.mindorks.example.coroutines.utils.Status
 
 class HomeFragment : BaseFragment(), View.OnClickListener, IBookmarksClickListener {
 
+    private var helpIcon: ImageView?=null
     private lateinit var adapter: BookMarkAdapter
     private lateinit var viewModel: BookMarkViewModel
     private lateinit var rootView: View
@@ -53,17 +56,23 @@ class HomeFragment : BaseFragment(), View.OnClickListener, IBookmarksClickListen
     }
 
     private fun setUpViewModel() {
-
         viewModel = initViewModel()
-
-
+    }
+    override fun onResume() {
+        super.onResume()
+        if(activity is MainActivity){
+            (activity  as MainActivity).addToolbarWithTitle(false, getString(R.string.home_screen))
+        }
     }
 
     fun setNewList(list: ArrayList<BookMarkModel>) {
         adapter.setNewList(list)
+        rootView.findViewById<TextView>(R.id.no_records_found_label).visibility =
+            if (list.size > 0) View.INVISIBLE else View.VISIBLE
     }
 
     fun initViews() {
+        helpIcon = rootView.findViewById<ImageView>(R.id.help_icon)
         fab = rootView.findViewById<FloatingActionButton>(R.id.fab)
         recyclerView = rootView.findViewById<RecyclerView>(R.id.list_recyclerview)
         recyclerView.layoutManager = LinearLayoutManager(context)
@@ -76,6 +85,7 @@ class HomeFragment : BaseFragment(), View.OnClickListener, IBookmarksClickListen
             )
         )
         fab.setOnClickListener(this)
+        helpIcon!!.setOnClickListener(this)
 
     }
 
@@ -103,6 +113,11 @@ class HomeFragment : BaseFragment(), View.OnClickListener, IBookmarksClickListen
             when (view.id) {
                 R.id.fab -> if (activity is MainActivity) {
                     (activity as MainActivity).setGoogleMap();
+                }
+                R.id.help_icon -> {
+                    if (activity is MainActivity) {
+                        (activity as MainActivity).setHelpFragment();
+                    }
                 }
             }
         }

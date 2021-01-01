@@ -19,4 +19,11 @@
     <color name="success_color">#3BAF8B</color>
 
     <color name="colorFacebookGrey">#C9CCD1</color>
+
+
+    <color name="colorPrimary">@color/colorDarkBlue</color>
+    <color name="colorPrimaryDark">@color/colorDarkBlue</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="chipIconTint">@color/purple_700</color>
+    <color name="more_tab_icon_color">#003C8D</color>
 </resources>

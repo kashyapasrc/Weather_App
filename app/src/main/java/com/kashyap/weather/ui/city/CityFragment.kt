@@ -16,6 +16,7 @@ import com.kashyap.weather.domain.models.BookMarkModel
 import com.kashyap.weather.domain.networking.response.forecast_info.Forecast
 import com.kashyap.weather.domain.networking.response.forecast_info.ForecastInfo
 import com.kashyap.weather.domain.networking.response.weather_update.WeatherUpdate
+import com.kashyap.weather.ui.MainActivity
 import com.kashyap.weather.ui.base.BaseFragment
 import com.kashyap.weather.ui.city.adapters.ForecastAdapter
 import com.kashyap.weather.utils.DisplaySnackMessage
@@ -64,6 +65,15 @@ class CityFragment : BaseFragment() {
         setupObserver()
 
         return rootView
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (activity is MainActivity) {
+            bookMarkModel.name?.let {
+                (activity as MainActivity).addToolbarWithTitle(true, it)
+            }
+        }
     }
 
     private fun initViews() {

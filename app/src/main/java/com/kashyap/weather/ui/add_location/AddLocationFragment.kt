@@ -25,6 +25,7 @@ import com.kashyap.weather.R
 import com.kashyap.weather.domain.databases.DatabaseBuilder
 import com.kashyap.weather.domain.databases.DatabaseHelperImpl
 import com.kashyap.weather.domain.databases.entity.BookMarks
+import com.kashyap.weather.domain.networking.response.forecast_info.Main
 import com.kashyap.weather.ui.MainActivity
 import com.kashyap.weather.ui.base.BaseFragment
 import com.kashyap.weather.utils.DisplaySnackMessage
@@ -66,6 +67,12 @@ class AddLocationFragment : BaseFragment(), OnMapReadyCallback {
         return rootView;
     }
 
+    override fun onResume() {
+        super.onResume()
+        if(activity is MainActivity){
+            (activity  as MainActivity).addToolbarWithTitle(true, getString(R.string.add_city))
+        }
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupViewModels()
